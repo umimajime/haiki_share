@@ -1,0 +1,20 @@
+/**
+ * Button
+ */
+.c-button {
+    padding: $space_l $space_xl;
+    border: 1px solid;
+    font-size: $font-size_xl;
+    color: white;
+    background-color: $site-color-corp;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.5s;
+    border-radius: 5px;
+    &:hover {
+        background-color: white;
+        transition: all 0.5s;
+        color: $site-color-corp;
+        border: 1px solid $site-color-corp;
+    }
+}

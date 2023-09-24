@@ -1,0 +1,96 @@
+/**
+ * Item
+ */
+
+.c-item {
+    width: 100%;
+    border: 2px solid $site-color-corp;
+    margin-bottom: $space_m;
+    position: relative;
+    @include mq(tablet) {
+        width: 48%;
+    }
+    @include mq(pc) {
+        width: 32%;
+    }
+
+    & > span:nth-child(1) {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: white;
+        background-color: $site-color-corp;
+        padding: 3px;
+        @include mq(pc) {
+            font-size: $font-size_l;
+            padding: $space_s;
+        }
+    }
+
+    & > span:nth-child(2) {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: white;
+        background-color: $site-color-corp;
+        padding: 3px;
+        @include mq(pc) {
+            font-size: $font-size_l;
+            padding: $space_s;
+        }
+    }
+
+    & .image-cover {
+        height: 150px;
+        overflow-y: scroll;
+        @include mq(tablet) {
+            height: 200px;
+        }
+        @include mq(pc) {
+            height: 250px;
+        }
+    }
+
+    & img {
+        margin-bottom: $space_s;
+        width: 100%;
+    }
+
+    & p {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 3px;
+        margin-bottom: $space_s;
+        @include mq(pc) {
+            font-size: $font-size_l;
+            padding: $space_s;
+        }
+    }
+
+    & a,
+    & a + span {
+        cursor: pointer;
+        font-size: $font-size_l;
+        text-align: center;
+        display: block;
+        padding: $space_s;
+        margin: 0 $space_s;
+        margin-bottom: $space_s;
+        border: 1px solid $site-color-corp;
+        color: white;
+        background-color: $site-color-corp;
+        transition: all 0.5s;
+        border-radius: 5px;
+        @include mq(tablet) {
+            padding: $space_m;
+        }
+        &:hover {
+            background-color: white;
+            transition: all 0.5s;
+            color: $site-color-corp;
+            border: 1px solid $site-color-corp;
+        }
+    }
+}

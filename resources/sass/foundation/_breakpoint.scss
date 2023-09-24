@@ -1,0 +1,12 @@
+/* BreakPoint
+   ----------------------------------------------------------------- */
+$breakpoints: (
+    "tablet": "screen and (min-width: 600px)",
+    "pc": "screen and (min-width: 834px)",
+) !default;
+
+@mixin mq($breakpoint: tablet) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}

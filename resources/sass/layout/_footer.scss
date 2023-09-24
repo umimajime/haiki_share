@@ -1,0 +1,11 @@
+/* Footer
+   ----------------------------------------------------------------- */
+.l-footer {
+    color: white;
+    background-color: $site-color-corp;
+    &__container {
+        width: $site-width;
+        margin: 0 auto;
+        padding: $space_l 0;
+    }
+}

@@ -1,0 +1,68 @@
+/**
+ * top
+ */
+.p-top {
+    padding-top: $header-height;
+    &__fv {
+        height: calc(100vh - $header-height);
+        width: 100vw;
+        position: relative;
+        background-image: url("/image/fv.jpg");
+        background-size: cover;
+    }
+    &__title {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: $site-width;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 40px 0;
+        text-align: center;
+        @include mq(pc) {
+            width: 70vw;
+            padding: 80px 40px;
+            & p:first-of-type {
+                font-size: $font-size_xl;
+            }
+        }
+        & p:last-of-type {
+            font-size: 40px;
+            @include mq(pc) {
+                font-size: 70px;
+            }
+        }
+    }
+    &__intro {
+        width: $site-width;
+        margin: 0 auto;
+        padding-top: $header-height;
+        @include mq(pc) {
+            text-align: center;
+            padding-top: 120px;
+        }
+        & p {
+            margin-bottom: $space_xxl;
+            font-size: $font-size_xl;
+            @include mq(pc) {
+                font-size: $font-size_3l;
+            }
+        }
+    }
+    &__register {
+        width: $site-width;
+        margin: 0 auto;
+        padding: $header-height 0;
+        text-align: center;
+        @include mq(pc) {
+            padding: 120px 0;
+        }
+        & p {
+            font-size: $font-size_xl;
+            margin-bottom: $space_xl;
+        }
+        & button:first-of-type {
+            width: 285px;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+/**
+ * itemListNotSearch
+ */
+.p-list-not-search-cover {
+    & .p-list {
+        margin: 0 $space_l;
+        flex-basis: 80%;
+
+        & ul:nth-of-type(1) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            @include mq(pc) {
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 32%;
+                }
+            }
+        }
+
+        & ul:nth-of-type(2) {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: $space_l;
+            display: flex;
+            overflow-x: scroll;
+            @include mq(tablet) {
+                width: 100%;
+                margin: 0 auto;
+                justify-content: center;
+            }
+            @include mq(pc) {
+                width: 290px;
+                overflow-x: visible;
+                margin: 0 auto;
+            }
+
+            & li {
+                font-size: $font-size_l;
+                border: 3px solid $site-color-corp;
+                padding: $space_l;
+                margin: 0 $space_s;
+                cursor: pointer;
+                transition: all 0.5s;
+
+                &:hover {
+                    color: white;
+                    background-color: $site-color-corp;
+                }
+
+                &.active {
+                    color: white;
+                    background-color: $site-color-corp;
+                }
+
+                &.disable {
+                    cursor: not-allowed;
+
+                    &:hover {
+                        color: black;
+                        background-color: white;
+                    }
+                }
+            }
+
+            & li:first-of-type {
+                margin-left: 0;
+            }
+
+            & li:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+    & .p-not-list {
+        text-align: center;
+        margin-top: $space_xl;
+        @include mq(tablet) {
+            width: 100%;
+        }
+    }
+}

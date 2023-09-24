@@ -1,0 +1,14 @@
+/**
+ * Form
+ */
+.c-title {
+    font-size: $font-size_l;
+    text-align: center;
+    margin: $space_xl 0;
+    & span {
+        border-bottom: 1px solid black;
+    }
+    @include mq(pc) {
+        font-size: $font-size_xxl;
+    }
+}

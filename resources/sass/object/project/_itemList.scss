@@ -1,0 +1,144 @@
+/**
+ * itemList
+ */
+.p-list-cover {
+    // @include mq(pc) {
+    //     display: flex;
+    // }
+    & .p-search {
+        border: $space_m solid $site-color-corp;
+        padding: $space_l;
+        margin: 0 $space_l;
+        margin-bottom: $space_l;
+
+        & h3 {
+            font-size: $font-size_l;
+            text-align: left;
+            margin: $space_xl 0;
+
+            & span {
+                border-bottom: 1px solid black;
+            }
+
+            @include mq(pc) {
+                font-size: $font-size_xxl;
+            }
+        }
+
+        & ul {
+            @include mq(tablet) {
+                display: flex;
+            }
+        }
+
+        & li {
+            margin-bottom: $space_l;
+            @include mq(tablet) {
+                margin-bottom: 0;
+                margin-right: $space_xl;
+            }
+            @include mq(pc) {
+                margin-right: $space_xxl;
+            }
+        }
+
+        & label:nth-of-type(1) {
+            display: block;
+            font-size: $font-size_l;
+            margin-bottom: $space_s;
+        }
+
+        & label:not(:nth-of-type(1)):after {
+            content: "\A";
+            white-space: pre;
+        }
+
+        & select {
+            font-size: $font-size_l;
+            padding: 5px 10px;
+            text-align: left;
+            @include mq(tablet) {
+                padding-right: 80px;
+            }
+        }
+    }
+    & .p-list {
+        margin: 0 $space_l;
+        flex-basis: 80%;
+
+        & ul:nth-of-type(1) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            @include mq(pc) {
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 32%;
+                }
+            }
+        }
+
+        & ul:nth-of-type(2) {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: $space_l;
+            display: flex;
+            overflow-x: scroll;
+            @include mq(tablet) {
+                width: 100%;
+                margin: 0 auto;
+                justify-content: center;
+            }
+            @include mq(pc) {
+                width: 290px;
+                overflow-x: visible;
+                margin: 0 auto;
+            }
+
+            & li {
+                font-size: $font-size_l;
+                border: 3px solid $site-color-corp;
+                padding: $space_l;
+                margin: 0 $space_s;
+                cursor: pointer;
+                transition: all 0.5s;
+
+                &:hover {
+                    color: white;
+                    background-color: $site-color-corp;
+                }
+
+                &.active {
+                    color: white;
+                    background-color: $site-color-corp;
+                }
+
+                &.disable {
+                    cursor: not-allowed;
+
+                    &:hover {
+                        color: black;
+                        background-color: white;
+                    }
+                }
+            }
+
+            & li:first-of-type {
+                margin-left: 0;
+            }
+
+            & li:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+    & .p-not-list {
+        text-align: center;
+        margin-top: $space_xl;
+        @include mq(tablet) {
+            width: 100%;
+        }
+    }
+}

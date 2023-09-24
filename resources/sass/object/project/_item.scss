@@ -1,0 +1,144 @@
+/**
+ * Item
+ */
+
+.p-item {
+    border: $space_m solid $site-color-corp;
+    padding: $space_l;
+    margin: 0 $space_l;
+    margin-bottom: $space_m;
+    position: relative;
+    @include mq(pc) {
+        width: 85%;
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+
+    & > span:nth-child(1) {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: white;
+        background-color: $site-color-corp;
+        font-size: $font-size_l;
+        padding: $space_m;
+        @include mq(pc) {
+            font-size: $font-size_l;
+            padding: $space_l;
+        }
+    }
+
+    & > span:nth-child(2) {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: white;
+        background-color: $site-color-corp;
+        font-size: $font-size_l;
+        padding: $space_m;
+        @include mq(pc) {
+            font-size: $font-size_l;
+            padding: $space_l;
+        }
+    }
+
+    & .cover {
+        @include mq(pc) {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    & .image-cover {
+        overflow-y: scroll;
+        margin-bottom: $space_s;
+        @include mq(tablet) {
+            height: 300px;
+            margin-bottom: $space_l;
+        }
+        @include mq(pc) {
+            height: 400px;
+            width: 50%;
+            margin-right: $space_l;
+        }
+    }
+
+    & img {
+        width: 100%;
+    }
+
+    & .content {
+        @include mq(pc) {
+            width: 50%;
+        }
+    }
+
+    & p {
+        padding: 3px;
+        margin-bottom: $space_s;
+        @include mq(tablet) {
+            font-size: $font-size_l;
+            margin-bottom: $space_l;
+        }
+        @include mq(pc) {
+            font-size: $font-size_l;
+            padding: $space_s;
+        }
+
+        & img {
+            height: 200px;
+            object-fit: cover;
+        }
+    }
+
+    & a {
+        font-size: $font-size_l;
+        text-align: center;
+        display: block;
+        padding: $space_s;
+        margin: 0 $space_s;
+        margin-bottom: $space_s;
+        border: 1px solid $site-color-corp;
+        color: white;
+        background-color: $site-color-corp;
+        transition: all 0.5s;
+        border-radius: 5px;
+        @include mq(tablet) {
+            padding: $space_m;
+        }
+        &:hover {
+            background-color: white;
+            transition: all 0.5s;
+            color: $site-color-corp;
+            border: 1px solid $site-color-corp;
+        }
+    }
+
+    & .button-field {
+        @include mq(tablet) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        & button {
+            width: 100%;
+            font-size: $font-size_l;
+            @include mq(pc) {
+                width: auto;
+                padding: 10px 10px;
+            }
+
+            &.soldout {
+                background-color: #c9ecae;
+                cursor: not-allowed;
+
+                &:hover {
+                    background-color: #c9ecae;
+                    color: white;
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}
