@@ -14,7 +14,13 @@
                         {{ msg }}
                     </li>
                 </ul>
-                <ul v-if="errors.password">
+                <ul
+                    v-if="
+                        errors.password &&
+                        errors.password[0] !==
+                            '入力されたログイン情報は登録されておりません。'
+                    "
+                >
                     <li v-for="msg in errors.password" :key="msg">
                         {{ msg }}
                     </li>
@@ -168,6 +174,12 @@ export default {
                 this.errors.email = [];
                 for (let i = 0; i < this.loginErrors.email.length; i++) {
                     this.errors.email.push(this.loginErrors.email[i]);
+                    if (
+                        this.loginErrors.email[i] ===
+                        "入力されたログイン情報は登録されておりません。"
+                    ) {
+                        this.errors.password.push(this.loginErrors.email[i]);
+                    }
                 }
             }
             if (this.loginErrors.password) {

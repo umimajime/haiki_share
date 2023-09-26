@@ -25,7 +25,7 @@ class PassReminderNotification extends ResetPassword
         return (new MailMessage())
             ->subject('パスワードリマインダー通知')
             ->view('email.pass-reminder-mail', [
-                'reset_url' => url(config('app.url') . ':8000' . substr(route('pass-reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset(), 'isStore' => empty($notifiable->store_name) ? 'false' : 'true'], false), 4)),
+                'reset_url' => url(config('app.url') . substr(route('pass-reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset(), 'isStore' => empty($notifiable->store_name) ? 'false' : 'true'], false), 4)),
                 'text1' => "
                 haiki shareをご利用いただきまして誠にありがとうございます。\n\n
                 下記記載のURLよりパスワード変更画面にアクセスし、パスワードを変更してください。\n
