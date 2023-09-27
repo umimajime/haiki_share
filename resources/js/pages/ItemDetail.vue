@@ -207,7 +207,7 @@ export default {
                     this.item.expiry_date
                 )}%0D%0A%0D%0A` +
                 "%20%23haikishare";
-            // '&url' =+ "https://www.google.com/";
+            '&url' =+ "http://52.195.211.5/";
             window.open(shareURL, "_blank");
         },
     },

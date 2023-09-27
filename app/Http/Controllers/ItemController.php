@@ -323,18 +323,18 @@ class ItemController extends Controller
 
     /**
      * ログイン中のコンビニが出品した商品の一覧を取得するメソッド
-     * @param void
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
 
-    public function readSellItem()
+    public function readSellItem(Request $request)
     {
         $store = new Store();
 
         $items = $store::with('prefecture')
             ->join('items', 'stores.id', '=', 'items.store_id')
             ->where([
-                ['stores.id', '=', Auth::guard('store')->user()->id],
+                ['stores.id', '=', $request->id],
                 ['items.deleted_at', '=', null]
             ])
             ->orderBy('items.id', 'desc')
@@ -345,18 +345,18 @@ class ItemController extends Controller
 
     /**
      * ログイン中のコンビニの購入された商品の一覧を取得するメソッド
-     * @param void
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
 
-    public function readSoldItem()
+    public function readSoldItem(Request $request)
     {
         $store = new Store();
 
         $items = $store::with('prefecture')
             ->join('items', 'stores.id', '=', 'items.store_id')
             ->where([
-                ['stores.id', '=', Auth::guard('store')->user()->id],
+                ['stores.id', '=', $request->id],
                 ['items.sell_flg', "=", "1"],
                 ['items.deleted_at', '=', null]
             ])

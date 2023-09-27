@@ -89,20 +89,22 @@ export default {
             this.loading = true;
 
             const sellItemResponse = await axios.get(
-                `/api/items/sell?page=${this.current_page}`
+                `/api/items/sell?page=${this.current_page}&userId=${this.$store.state.auth.user.id}`
             );
 
             const soldItemResponse = await axios.get(
-                `/api/items/sold?page=${this.current_page}`
+                `/api/items/sold?page=${this.current_page}&userId=${this.$store.state.auth.user.id}`
             );
 
             this.loading = false;
 
-            if (
-                sellItemResponse.status !== OK ||
-                soldItemResponse.status !== OK
-            ) {
-                this.$store.commit("error/setCode", response.status);
+            if (sellItemResponse.status !== OK) {
+                this.$store.commit("error/setCode", sellItemResponse.status);
+                return false;
+            }
+
+            if (soldItemResponse.status !== OK) {
+                this.$store.commit("error/setCode", soldItemResponse.status);
                 return false;
             }
 
