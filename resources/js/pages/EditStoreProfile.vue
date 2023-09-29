@@ -772,7 +772,10 @@ export default {
                         timeout: 5000,
                     });
 
-                    this.$router.push("/login");
+                    this.$router.push({
+                        path: "login",
+                        query: { isStore: true },
+                    });
                 }
             }
         },

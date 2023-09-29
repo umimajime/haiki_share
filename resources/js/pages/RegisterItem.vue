@@ -285,6 +285,7 @@ export default {
         clearFile() {
             this.item.photo = "";
             this.preview = "";
+            this.$el.querySelector(".js-select-file").value = "";
             this.$el
                 .querySelector(".js-remove-button")
                 .classList.remove("active");

@@ -140,6 +140,8 @@ class ItemController extends Controller
     {
         $item = new Item();
 
+        Log::debug(ini_get('post_max_size'));
+
         $extension = $request->photo->extension();
 
         $item->image = mb_substr($request->name, 0, 100)  .  '_' . ($item::withTrashed()->count() + 1) . '.'  . $extension;
@@ -334,7 +336,7 @@ class ItemController extends Controller
         $items = $store::with('prefecture')
             ->join('items', 'stores.id', '=', 'items.store_id')
             ->where([
-                ['stores.id', '=', $request->id],
+                ['stores.id', '=', $request->userId],
                 ['items.deleted_at', '=', null]
             ])
             ->orderBy('items.id', 'desc')
@@ -356,7 +358,7 @@ class ItemController extends Controller
         $items = $store::with('prefecture')
             ->join('items', 'stores.id', '=', 'items.store_id')
             ->where([
-                ['stores.id', '=', $request->id],
+                ['stores.id', '=', $request->userId],
                 ['items.sell_flg', "=", "1"],
                 ['items.deleted_at', '=', null]
             ])
