@@ -49,38 +49,38 @@ class EditStoreProfileController extends Controller
 
         $store = new Store();
 
-        $store = $store::find(Auth::guard('store')->user()->id);
+        $store = $store::find($request->id);
 
         if ($request->store_name !== null) {
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['store_name' => $request->store_name]);
+            $store::where('id', '=', $request->id)->update(['store_name' => $request->store_name]);
         }
 
         if ($request->branch_name !== null) {
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['branch_name' => $request->branch_name]);
+            $store::where('id', '=', $request->id)->update(['branch_name' => $request->branch_name]);
         }
 
         if ($request->post_code !== null) {
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['post_code' => $request->post_code]);
+            $store::where('id', '=', $request->id)->update(['post_code' => $request->post_code]);
         }
 
         if ($request->prefecture !== null) {
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['prefecture' => $request->prefecture]);
+            $store::where('id', '=', $request->id)->update(['prefecture' => $request->prefecture]);
         }
 
         if ($request->municipality !== null) {
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['municipality' => $request->municipality]);
+            $store::where('id', '=', $request->id)->update(['municipality' => $request->municipality]);
         }
 
         if ($request->address !== null) {
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['address' => $request->address]);
+            $store::where('id', '=', $request->id)->update(['address' => $request->address]);
         }
 
         if ($request->building !== null) {
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['building' => $request->building]);
+            $store::where('id', '=', $request->id)->update(['building' => $request->building]);
         }
 
         if ($request->email !== null) {
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['email' => $request->email]);
+            $store::where('id', '=', $request->id)->update(['email' => $request->email]);
             $isChangeEmail = true;
         }
 
@@ -91,7 +91,7 @@ class EditStoreProfileController extends Controller
                 return response($errors, 422);
             }
 
-            $store::where('id', '=', Auth::guard('store')->user()->id)->update(['password' => Hash::make($request->password)]);
+            $store::where('id', '=', $request->id)->update(['password' => Hash::make($request->password)]);
             $isChangepPassword = true;
         }
 

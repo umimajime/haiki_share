@@ -388,6 +388,7 @@ export default {
         return {
             loading: false,
             store: {
+                id: this.$store.state.auth.user.id,
                 store_name: this.$store.state.auth.user.store_name,
                 branch_name: this.$store.state.auth.user.branch_name
                     ? this.$store.state.auth.user.branch_name

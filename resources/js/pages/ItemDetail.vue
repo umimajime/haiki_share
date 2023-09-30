@@ -4,7 +4,11 @@
             <span>商品詳細画面</span>
         </h2>
         <Loader v-show="loading"></Loader>
-        <div class="p-item" v-if="item.length !== 0" v-show="!loading">
+        <div
+            class="p-item"
+            v-if="item !== null && item.length !== 0"
+            v-show="!loading"
+        >
             <span>{{ item.sell_flg === 0 ? "販売中" : "購入済" }}</span>
             <span>{{ item.prefecture.name }}</span>
             <div class="cover">
@@ -95,13 +99,15 @@ export default {
         // 特定の商品を取得するメソッド
         async getItem() {
             const response = await axios.get(
-                `/api/item?id=${this.$route.params.id}`
+                `/api/item?id=${this.$route.params.id}&userId=${this.$store.state.auth.user.id}`
             );
 
             if (response.status !== OK) {
                 this.$store.commit("error/setCode", response.status);
                 return false;
             }
+
+            console.log(response);
 
             this.item = response.data[0];
 

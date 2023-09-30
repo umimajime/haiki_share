@@ -206,6 +206,8 @@ export default {
                 content: "商品の購入をキャンセルしました！",
                 timeout: 5000,
             });
+
+            this.$router.push("/user-mypage");
         },
     },
     created() {

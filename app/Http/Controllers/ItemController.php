@@ -66,15 +66,13 @@ class ItemController extends Controller
             return response()->json($itemArr);
         }
 
-        if (!empty(Auth::guard('store')->user())) {
-            if ($item[0]->store_id === Auth::guard('store')->user()->id) {
-                $itemArr['isMatchStore'] = true;
-            } else {
-                $itemArr['isMatchStore'] = false;
-            }
-
-            return response()->json($itemArr);
+        if ($item[0]->store_id === $request->userId) {
+            $itemArr['isMatchStore'] = true;
+        } else {
+            $itemArr['isMatchStore'] = false;
         }
+
+        return response()->json($itemArr);
     }
 
     /**
