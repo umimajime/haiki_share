@@ -206,8 +206,9 @@ export default {
                 `賞味期限：${this.formatDate(
                     this.item.expiry_date
                 )}%0D%0A%0D%0A` +
-                "%20%23haikishare";
-            '&url' =+ "http://52.195.211.5/";
+                "%20%23haikishare" +
+                "&url=" +
+                "http://52.195.211.5/";
             window.open(shareURL, "_blank");
         },
     },

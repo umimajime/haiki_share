@@ -140,8 +140,6 @@ class ItemController extends Controller
     {
         $item = new Item();
 
-        Log::debug(ini_get('post_max_size'));
-
         $extension = $request->photo->extension();
 
         $item->image = mb_substr($request->name, 0, 100)  .  '_' . ($item::withTrashed()->count() + 1) . '.'  . $extension;

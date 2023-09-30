@@ -256,6 +256,7 @@ export default {
             };
             reader.readAsDataURL(e.target.files[0]);
             this.item.photo = e.target.files[0];
+            e.target.value = "";
         },
         // ファイルドロップ時にファイルプレビューを実行するメソッド
         previewFileForDrop(e) {
@@ -285,7 +286,6 @@ export default {
         clearFile() {
             this.item.photo = "";
             this.preview = "";
-            this.$el.querySelector(".js-select-file").value = "";
             this.$el
                 .querySelector(".js-remove-button")
                 .classList.remove("active");
