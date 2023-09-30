@@ -208,7 +208,7 @@ export default {
                 )}%0D%0A%0D%0A` +
                 "%20%23haikishare" +
                 "&url=" +
-                "http://52.195.211.5/";
+                "http://52.195.211.5";
             window.open(shareURL, "_blank");
         },
     },

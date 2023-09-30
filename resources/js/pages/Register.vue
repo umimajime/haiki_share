@@ -715,6 +715,9 @@ export default {
         },
         // ユーザー登録でエラーがあった場合にエラーを返却する関数
         registerErrors: function () {
+            if (this.registerErrors === null) {
+                return;
+            }
             if (this.registerErrors.store_name) {
                 this.errors.store_name = [];
                 for (

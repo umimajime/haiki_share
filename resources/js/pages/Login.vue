@@ -170,6 +170,9 @@ export default {
         },
         // ログインでエラーがあった場合にエラーを返却する関数
         loginErrors: function () {
+            if (this.loginErrors === null) {
+                return;
+            }
             if (this.loginErrors.email) {
                 this.errors.email = [];
                 for (let i = 0; i < this.loginErrors.email.length; i++) {

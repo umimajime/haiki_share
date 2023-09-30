@@ -549,6 +549,9 @@ export default {
         },
         // コンビニ側プロフィール編集でエラーがあった場合にエラーを返却する関数
         editStoreProfileError: function () {
+            if (this.editStoreProfileError === null) {
+                return;
+            }
             if (this.editStoreProfileError.store_name) {
                 this.errors.store_name = [];
                 for (

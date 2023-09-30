@@ -194,6 +194,9 @@ export default {
         },
         // 利用者側プロフィール編集でエラーがあった場合にエラーを返却する関数
         editUserProfileError: function () {
+            if (this.editUserProfileError === null) {
+                return;
+            }
             if (this.editUserProfileError.email) {
                 this.errors.email = [];
                 for (

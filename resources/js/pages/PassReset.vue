@@ -154,6 +154,9 @@ export default {
         },
         // パスワードリセットでエラーがあった場合にエラーを返却する関数
         passResetErrors: function () {
+            if (this.passResetErrors === null) {
+                return;
+            }
             if (JSON.parse(JSON.stringify(this.passResetErrors)).password) {
                 this.errors.password = [];
                 for (
@@ -172,6 +175,9 @@ export default {
         },
         // トークンチェックでエラーがあった場合にエラーを返却する関数
         checkTokenErrors: function () {
+            if (this.checkTokenErrors === null) {
+                return;
+            }
             this.user.token_valid_flg = 1;
         },
     },

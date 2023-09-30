@@ -94,6 +94,9 @@ export default {
         },
         // パスワードリマインダー送信でエラーがあった場合にエラーを返却する関数
         passReminderSendErrors: function () {
+            if (this.passReminderSendErrors === null) {
+                return;
+            }
             if (JSON.parse(JSON.stringify(this.passReminderSendErrors)).email) {
                 this.errors.email = [];
                 for (
