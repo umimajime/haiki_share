@@ -44,6 +44,8 @@ class ItemController extends Controller
         $store = new Store();
         $history = new History();
 
+        Log::debug($request);
+
         $item = $store::with('prefecture')
             ->join('items', 'stores.id', '=', 'items.store_id')
             ->where('items.id', $request->id)
@@ -66,7 +68,7 @@ class ItemController extends Controller
             return response()->json($itemArr);
         }
 
-        if ($item[0]->store_id === $request->userId) {
+        if ($item[0]->store_id === (int)$request->userId) {
             $itemArr['isMatchStore'] = true;
         } else {
             $itemArr['isMatchStore'] = false;
@@ -137,6 +139,7 @@ class ItemController extends Controller
     public function create(StoreItem $request)
     {
         $item = new Item();
+        $store = new Store();
 
         $extension = $request->photo->extension();
 
@@ -165,7 +168,7 @@ class ItemController extends Controller
         DB::beginTransaction();
 
         try {
-            Auth::guard('store')->user()->items()->save($item);
+            $store::find($request->store_id)->items()->save($item);
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -185,6 +188,7 @@ class ItemController extends Controller
     public function update(StoreEditItem $request)
     {
         $item = new Item();
+        $store = new Store();
 
         $sell_flg = $item::where([
             'id' => $request->item_id,
@@ -229,7 +233,7 @@ class ItemController extends Controller
             DB::beginTransaction();
 
             try {
-                Auth::guard('store')->user()->items()->where('id', '=', $request->item_id)->update([
+                $store::find($request->store_id)->items()->where('id', '=', $request->item_id)->update([
                     'image' => $item->image,
                     'name' => $item->name,
                     'price' => $item->price,
@@ -252,7 +256,7 @@ class ItemController extends Controller
         DB::beginTransaction();
 
         try {
-            Auth::guard('store')->user()->items()->where('id', '=', $request->item_id)->update([
+            $store::find($request->store_id)->items()->where('id', '=', $request->item_id)->update([
                 'name' => $item->name,
                 'price' => $item->price,
                 'expiry_date' => $item->expiry_date

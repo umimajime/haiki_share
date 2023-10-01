@@ -207,7 +207,7 @@ export default {
                 timeout: 5000,
             });
 
-            this.$router.push("/user-mypage");
+            location.reload();
         },
     },
     created() {

@@ -346,6 +346,7 @@ export default {
             this.loading = true;
 
             const formData = new FormData();
+            formData.append("store_id", this.$store.state.auth.user.id);
             formData.append("item_id", this.item.id);
             formData.append("image", this.item.image);
             formData.append("name", this.item.name);

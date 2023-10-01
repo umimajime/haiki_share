@@ -303,6 +303,7 @@ export default {
             this.loading = true;
 
             const formData = new FormData();
+            formData.append("store_id", this.$store.state.auth.user.id);
             formData.append("photo", this.item.photo);
             formData.append("name", this.item.name);
             formData.append("price", this.item.price);
