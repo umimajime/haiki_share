@@ -107,8 +107,6 @@ export default {
                 return false;
             }
 
-            console.log(response);
-
             this.item = response.data[0];
 
             if ("isBuyUser" in response.data) {

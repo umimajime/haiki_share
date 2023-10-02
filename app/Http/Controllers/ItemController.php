@@ -295,18 +295,18 @@ class ItemController extends Controller
 
     /**
      * ログイン中の利用者が購入した商品の一覧を取得するメソッド
-     * @param void
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
 
-    public function readBuyItem()
+    public function readBuyItem(Request $request)
     {
         $history = new History();
 
         $history = $history::join('items as i', 'histories.item_id', '=', 'i.id')
             ->join('stores as s', 'i.store_id', '=', 's.id')
             ->join('prefectures as p', 's.prefecture', '=', 'p.id')
-            ->where('histories.user_id', '=', Auth::user()->id)
+            ->where('histories.user_id', '=', $request->id)
             ->orderBy('histories.id', 'desc')
             ->select(
                 'i.id',

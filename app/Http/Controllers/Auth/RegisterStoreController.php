@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Store;
-use App\Http\Controllers\Controller;
 use App\Mail\Notification;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class RegisterStoreController extends Controller
 {
@@ -40,7 +41,7 @@ class RegisterStoreController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:store');
     }
 
     /**
@@ -83,6 +84,11 @@ class RegisterStoreController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('store');
     }
 
     // ユーザー登録の完了後に、ユーザー情報を返却するメソッド

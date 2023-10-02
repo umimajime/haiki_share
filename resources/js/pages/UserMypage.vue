@@ -163,7 +163,7 @@ export default {
             this.loading = true;
 
             const response = await axios.get(
-                `/api/items/buy?page=${this.current_page}`
+                `/api/items/buy?page=${this.current_page}&userId=${this.$store.state.auth.user.id}`
             );
 
             this.loading = false;
