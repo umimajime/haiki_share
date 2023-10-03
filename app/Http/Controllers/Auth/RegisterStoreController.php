@@ -58,8 +58,8 @@ class RegisterStoreController extends Controller
             'post_code' => ['required', 'string', 'regex:{^\d{3}-\d{4}$}'],
             'prefecture' => ['required', 'string'],
             'municipality' => ['required', 'string'],
-            'address' => ['required', 'string'],
-            'building' => ['nullable', 'string'],
+            'address' => ['required', 'string', 'max:255'],
+            'building' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email:filter,dns', 'max:255', 'unique:users', 'unique:stores'],
             'password' => ['required', 'string', 'min:8', 'max:24', 'regex:{^[a-zA-Z0-9.?/-]{8,24}$}', 'confirmed'],
         ]);

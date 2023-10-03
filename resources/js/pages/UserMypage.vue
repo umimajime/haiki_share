@@ -207,7 +207,11 @@ export default {
                 timeout: 5000,
             });
 
-            location.reload();
+            for (let i = 0; i < this.items.length; i++) {
+                if (this.items[i].id === id) {
+                    this.items.splice(i, 1);
+                }
+            }
         },
     },
     created() {

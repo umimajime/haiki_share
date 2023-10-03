@@ -356,9 +356,11 @@
                     type="text"
                     id="address"
                     v-model="store.address"
+                    maxlength="255"
                     required
                 />
                 <ul>
+                    <li>・255文字以下で入力してください。</li>
                     <li>・（例：南青山０ー０ー０）</li>
                 </ul>
             </div>
@@ -383,6 +385,7 @@
                     maxlength="255"
                 />
                 <ul>
+                    <li>・255文字以下で入力してください。</li>
                     <li>・（例：haikiマンション　０００号室）</li>
                 </ul>
             </div>
@@ -661,6 +664,20 @@ export default {
             if (this.store.address.length === 0) {
                 this.errors.address.push("番地は入力必須です。");
                 return;
+            }
+            if (this.store.address.length >= 255) {
+                this.errors.address.push(
+                    "番地は255文字以下で入力してください。"
+                );
+            }
+        },
+        // コンビニ側の建物名・部屋番号のバリデーションチェックをする関数
+        "store.building": function () {
+            this.errors.building = [];
+            if (this.store.building.length >= 255) {
+                this.errors.building.push(
+                    "建物名・部屋番号は255文字以下で入力してください。"
+                );
             }
         },
         // コンビニ側のメールアドレスのバリデーションチェックをする関数

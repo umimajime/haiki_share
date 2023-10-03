@@ -63,7 +63,7 @@
                 }"
             >
                 <label for="password"
-                    >新しいパスワード<span class="optional">＊任意</span></label
+                    >パスワード<span class="optional">＊任意</span></label
                 >
                 <input
                     type="password"
@@ -93,7 +93,7 @@
                 }"
             >
                 <label for="password_confirmation"
-                    >新しいパスワード(再入力)<span class="optional"
+                    >パスワード(再入力)<span class="optional"
                         >＊任意</span
                     ></label
                 >
@@ -125,7 +125,7 @@ export default {
         return {
             loading: false,
             user: {
-                email: this.$store.state.auth.user.email,
+                email: "",
                 password: "",
                 password_confirmation: "",
             },

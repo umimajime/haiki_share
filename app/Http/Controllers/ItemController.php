@@ -306,7 +306,7 @@ class ItemController extends Controller
         $history = $history::join('items as i', 'histories.item_id', '=', 'i.id')
             ->join('stores as s', 'i.store_id', '=', 's.id')
             ->join('prefectures as p', 's.prefecture', '=', 'p.id')
-            ->where('histories.user_id', '=', $request->id)
+            ->where('histories.user_id', '=', $request->userId)
             ->orderBy('histories.id', 'desc')
             ->select(
                 'i.id',
