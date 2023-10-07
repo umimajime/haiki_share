@@ -89,7 +89,7 @@ export default {
                     });
 
                     this.$router.push({
-                        path: "login",
+                        path: "/login",
                         query: { isStore: true },
                     });
                 }
